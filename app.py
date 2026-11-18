@@ -472,14 +472,28 @@ with aba2:
 
 with aba3:
     st.subheader("Histórico da Tarifa (Valor por kWh)")
-    fig_tarifa = px.step(
+    ## substituidos
+    #fig_tarifa = px.step(
+    #   filtrado,
+    #   x="data_leitura",
+    #    y="tarifa_kw",
+    #    markers=True,
+    #    labels={"data_leitura": "Data da Leitura", "tarifa_kw": "Tarifa (R$/kWh)"},
+    #)
+    #fig_tarifa.update_traces(line_color=VERDE_ESCURO)
+
+    ## por este
+    fig_tarifa = px.line(
         filtrado,
         x="data_leitura",
         y="tarifa_kw",
         markers=True,
+        line_shape="hv",
         labels={"data_leitura": "Data da Leitura", "tarifa_kw": "Tarifa (R$/kWh)"},
     )
     fig_tarifa.update_traces(line_color=VERDE_ESCURO)
+
+    
     st.plotly_chart(fig_tarifa, use_container_width=True)
 
     st.subheader("Status dos Circuitos / Disjuntores nas Leituras")
